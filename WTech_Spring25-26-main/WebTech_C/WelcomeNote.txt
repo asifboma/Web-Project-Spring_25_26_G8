@@ -1,0 +1,5 @@
+# Welcome to Web Tech Spring 2025-26
+
+Welcome to the Web Technology course for Spring 2025-26! We're excited to have you in this journey where we'll explore the latest web development tools, techniques, and best practices. This repository will be your central hub for all course materials, assignments, and projects. Get ready to dive into the world of web technologies!
+
+Let's make this a great semester!

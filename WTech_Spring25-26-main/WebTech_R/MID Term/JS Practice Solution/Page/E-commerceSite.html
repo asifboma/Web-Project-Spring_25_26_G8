@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My E-commerce Site</title>
+    <link rel="stylesheet" href="D:\AIUB\Spring 25-26\WebTechnology\WTech_Spring25-26\WebTech_R\JS Practice Solution\Design\Style.css">
+</head>
+<body>
+    <header>
+        <h1>My E-commerce Site</h1>
+    </header>
+
+    <main>
+        <div class="forms-container">
+            <fieldset class="cart-section">
+                <legend>Add to Cart</legend>
+                <div class="product-info">
+                    <p><strong>Product:</strong> Wireless Mouse</p>
+                    <p><strong>Unit Price:</strong> 500 Tk</p>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" value="1" min="1">
+                </div>
+                <div class="form-group">
+                    <p><strong>Total Price:</strong> <span id="totalPrice">500</span> Tk</p>
+                </div>
+                <p id="couponMessage" class="coupon-message"></p>
+            </fieldset>
+
+            <fieldset class="checkout-section">
+                <legend>Checkout</legend>
+                <div class="form-group">
+                    <label for="address">Shipping Address:</label>
+                    <textarea id="address" rows="3" placeholder="Enter your full address"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="delivery">Delivery Location:</label>
+                    <select id="delivery">
+                        <option value="inside">Delivery Inside Dhaka</option>
+                        <option value="outside">Delivery Outside Dhaka</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <p><strong>Delivery Charge:</strong> <span id="deliveryCharge">50</span> Tk</p>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="terms">
+                    <label for="terms">I agree to all the terms and conditions</label>
+                </div>
+                <button id="submitBtn" class="submit-btn" style="display: none;">Submit Order</button>
+            </fieldset>
+        </div>
+    </main>
+
+    <footer>
+        <p>Copyright@2026</p>
+    </footer>
+
+    <script src="D:\AIUB\Spring 25-26\WebTechnology\WTech_Spring25-26\WebTech_R\JS Practice Solution\Javascript\Script.js"></script>
+</body>
+</html>
