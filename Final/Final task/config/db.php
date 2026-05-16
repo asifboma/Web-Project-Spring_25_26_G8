@@ -12,8 +12,8 @@ class Database {
             $db_host,
             $db_user,
             $db_password,
-            $db_name,
-            3307
+            $db_name
+            
         );
 
         if ($connection->connect_error)
