@@ -2,21 +2,17 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
-<<<<<<< HEAD
--- Host: 127.0.0.1
--- Generation Time: May 14, 2026 at 07:23 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
-=======
 -- Host: 127.0.0.1:3307
 -- Generation Time: May 16, 2026 at 02:09 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
->>>>>>> 8353924 (task3)
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
+CREATE DATABASE IF NOT EXISTS `project8_db`;
+USE `project8_db`;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -73,8 +69,6 @@ CREATE TABLE `projects` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< HEAD
-=======
 --
 -- Dumping data for table `projects`
 --
@@ -91,7 +85,6 @@ INSERT INTO `projects` (`id`, `workspace_id`, `name`, `description`, `deadline`,
 (10, 9, 'aiub', 'books & beyond', '2026-05-27', '#3498db', 0, '2026-05-16 10:25:12'),
 (11, 9, 'R', 'webtech', '2026-05-20', '#e74c3c', 0, '2026-05-16 10:58:23');
 
->>>>>>> 8353924 (task3)
 -- --------------------------------------------------------
 
 --
@@ -104,8 +97,6 @@ CREATE TABLE `project_members` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< HEAD
-=======
 --
 -- Dumping data for table `project_members`
 --
@@ -121,7 +112,6 @@ INSERT INTO `project_members` (`id`, `project_id`, `user_id`) VALUES
 (12, 11, 5),
 (13, 11, 4);
 
->>>>>>> 8353924 (task3)
 -- --------------------------------------------------------
 
 --
@@ -140,8 +130,6 @@ CREATE TABLE `tasks` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< HEAD
-=======
 --
 -- Dumping data for table `tasks`
 --
@@ -152,7 +140,6 @@ INSERT INTO `tasks` (`id`, `project_id`, `title`, `description`, `assigned_to`, 
 (4, 10, 'test2', 'test2', 4, 'low', '2026-05-20', 'todo', '2026-05-16 11:30:12'),
 (5, 11, 'taskA', 'A', 4, 'low', '2026-05-20', 'todo', '2026-05-16 11:33:35');
 
->>>>>>> 8353924 (task3)
 -- --------------------------------------------------------
 
 --
@@ -167,8 +154,6 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< HEAD
-=======
 --
 -- Dumping data for table `users`
 --
@@ -179,7 +164,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `password_hash`, `created_at`) VALUE
 (4, 'diab', 'diab@gmail.com', '$2y$10$5zpEdwRxKuw07HOG88Ccsea.6pBITB1eQIbxlREP9PENSeG/tdr1W', '2026-05-15 16:53:42'),
 (5, 'angkita', 'angkita116@gmail.com', '$2y$10$OySR90sHSNcgKVIaw4yZr.vmJSOAeCup1PoJdUn2RvYKMnWgrL9Xq', '2026-05-16 10:16:25');
 
->>>>>>> 8353924 (task3)
 -- --------------------------------------------------------
 
 --
@@ -195,8 +179,6 @@ CREATE TABLE `workspaces` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< HEAD
-=======
 --
 -- Dumping data for table `workspaces`
 --
@@ -212,7 +194,6 @@ INSERT INTO `workspaces` (`id`, `name`, `description`, `owner_id`, `invite_code`
 (9, 'aiub', 'gol', 5, 'JC6Z7A', '2026-05-16 10:19:39'),
 (10, 'library', 'book management', 5, 'PDE985', '2026-05-16 10:21:28');
 
->>>>>>> 8353924 (task3)
 -- --------------------------------------------------------
 
 --
@@ -227,8 +208,6 @@ CREATE TABLE `workspace_members` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
-<<<<<<< HEAD
-=======
 -- Dumping data for table `workspace_members`
 --
 
@@ -242,7 +221,6 @@ INSERT INTO `workspace_members` (`id`, `workspace_id`, `user_id`, `joined_at`) V
 (12, 9, 4, '2026-05-16 11:26:21');
 
 --
->>>>>>> 8353924 (task3)
 -- Indexes for dumped tables
 --
 
@@ -316,11 +294,7 @@ ALTER TABLE `workspace_members`
 -- AUTO_INCREMENT for table `activity_logs`
 --
 ALTER TABLE `activity_logs`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
->>>>>>> 8353924 (task3)
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -332,61 +306,37 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
->>>>>>> 8353924 (task3)
 
 --
 -- AUTO_INCREMENT for table `project_members`
 --
 ALTER TABLE `project_members`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
->>>>>>> 8353924 (task3)
 
 --
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
->>>>>>> 8353924 (task3)
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
->>>>>>> 8353924 (task3)
 
 --
 -- AUTO_INCREMENT for table `workspaces`
 --
 ALTER TABLE `workspaces`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
->>>>>>> 8353924 (task3)
 
 --
 -- AUTO_INCREMENT for table `workspace_members`
 --
 ALTER TABLE `workspace_members`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
->>>>>>> 8353924 (task3)
 
 --
 -- Constraints for dumped tables
