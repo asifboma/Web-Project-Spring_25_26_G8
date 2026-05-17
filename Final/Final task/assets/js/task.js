@@ -6,35 +6,35 @@ function closeTaskModal() {
     document.getElementById("taskModal").style.display = "none";
 }
 
-function moveTask(taskId, newStatus) {
-    let formData = new FormData();
+function moveTask(taskId, newStatus)
+{
+    var formData = new FormData();
+
     formData.append("task_id", taskId);
     formData.append("status", newStatus);
 
-    fetch("../../controllers/api/moveTaskStatus.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.ok) {
-            let taskCard = document.getElementById("task-" + taskId);
-            let targetColumn = document.getElementById(data.new_status);
+    var xhttp = new XMLHttpRequest();
 
-            if (taskCard && targetColumn) {
-                taskCard.setAttribute("data-status", data.new_status);
-                targetColumn.appendChild(taskCard);
+    xhttp.onreadystatechange = function()
+    {
+        if(this.readyState == 4 && this.status == 200)
+        {
+            var data = JSON.parse(this.responseText);
+
+            if(data.ok == true)
+            {
                 location.reload();
             }
-        } else {
-            alert(data.message);
+            else
+            {
+                alert(data.message);
+            }
         }
-    })
-    .catch(error => {
-        alert("Something went wrong.");
-    });
-}
+    };
 
+    xhttp.open("POST", "../../controllers/api/moveTaskStatus.php", true);
+    xhttp.send(formData);
+}
 window.onload = function () {
     let cards = document.getElementsByClassName("task-card");
     let today = new Date();

@@ -47,15 +47,15 @@ class TaskModel
     }
 
     public function updateTaskStatus($task_id, $status)
-    {
-        $sql = "UPDATE tasks
-                SET status = '$status'
-                WHERE id = '$task_id'";
+{
+    $sql = "UPDATE tasks
+            SET status = '$status'
+            WHERE id = '$task_id'";
 
-        $result = $this->conn->query($sql);
+    $result = $this->conn->query($sql);
 
-        return $result;
-    }
+    return $result;
+}
 }
 
 ?>

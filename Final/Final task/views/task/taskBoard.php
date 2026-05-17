@@ -135,7 +135,11 @@ include __DIR__ . "/../../controllers/taskBoardController.php";
                     <p class="priority-<?php echo $task['priority']; ?>">Priority: <?php echo $task["priority"]; ?></p>
                     <p>Due: <?php echo $task["due_date"]; ?></p>
 
-                    <button onclick="moveTask(<?php echo $task['id']; ?>, 'in-progress')">→</button>
+                    <form method="post" style="display:inline;">
+    <input type="hidden" name="task_id" value="<?php echo $task["id"]; ?>">
+    <input type="hidden" name="status" value="in-progress">
+    <input type="submit" name="move_task" value="→">
+</form>
                     <a href="taskDetails.php?task_id=<?php echo $task['id']; ?>">View Details</a>
                 </div>
             <?php } ?>
@@ -151,8 +155,17 @@ include __DIR__ . "/../../controllers/taskBoardController.php";
                     <p class="priority-<?php echo $task['priority']; ?>">Priority: <?php echo $task["priority"]; ?></p>
                     <p>Due: <?php echo $task["due_date"]; ?></p>
 
-                    <button onclick="moveTask(<?php echo $task['id']; ?>, 'todo')">←</button>
-                    <button onclick="moveTask(<?php echo $task['id']; ?>, 'done')">→</button>
+                    <form method="post" style="display:inline;">
+    <input type="hidden" name="task_id" value="<?php echo $task["id"]; ?>">
+    <input type="hidden" name="status" value="todo">
+    <input type="submit" name="move_task" value="←">
+</form>
+
+<form method="post" style="display:inline;">
+    <input type="hidden" name="task_id" value="<?php echo $task["id"]; ?>">
+    <input type="hidden" name="status" value="done">
+    <input type="submit" name="move_task" value="→">
+</form>
                     <a href="taskDetails.php?task_id=<?php echo $task['id']; ?>">View Details</a>
                 </div>
             <?php } ?>
@@ -168,7 +181,11 @@ include __DIR__ . "/../../controllers/taskBoardController.php";
                     <p class="priority-<?php echo $task['priority']; ?>">Priority: <?php echo $task["priority"]; ?></p>
                     <p>Due: <?php echo $task["due_date"]; ?></p>
 
-                    <button onclick="moveTask(<?php echo $task['id']; ?>, 'in-progress')">←</button>
+                    <form method="post" style="display:inline;">
+    <input type="hidden" name="task_id" value="<?php echo $task["id"]; ?>">
+    <input type="hidden" name="status" value="in-progress">
+    <input type="submit" name="move_task" value="←">
+</form>
                     <a href="taskDetails.php?task_id=<?php echo $task['id']; ?>">View Details</a>
                 </div>
             <?php } ?>

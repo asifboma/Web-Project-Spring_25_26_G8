@@ -17,15 +17,28 @@ if (!isset($_GET["project_id"])) {
     exit();
 }
 
+
 $project_id = $_GET["project_id"];
 
 $database = new Database();
 $connection = $database->connection();
 
-$projectModel = new ProjectModel($connection);
 $taskModel = new TaskModel($connection);
+$projectModel = new ProjectModel();
 
 $projectResult = $projectModel->getProjectById($connection, $project_id);
+
+
+if(isset($_POST["move_task"]))
+{
+    $task_id = $_POST["task_id"];
+    $status = $_POST["status"];
+
+    
+    $taskModel->updateTaskStatus($task_id, $status);
+
+    header("Location: taskBoard.php?project_id=".$project_id);
+}
 
 if ($projectResult->num_rows == 0) {
     echo "Project not found.";
