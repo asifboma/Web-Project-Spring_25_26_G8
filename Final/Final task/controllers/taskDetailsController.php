@@ -36,7 +36,7 @@ else
 {
     $task = $taskResult->fetch_assoc();
 
-    $projectResult = $projectModel->getProjectById($task["project_id"]);
+    $projectResult = $projectModel->getProjectById($connection, $task["project_id"]);
 
     if($projectResult->num_rows == 0)
     {
