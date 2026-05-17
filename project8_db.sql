@@ -2,17 +2,14 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3307
--- Generation Time: May 16, 2026 at 02:09 PM
+-- Host: 127.0.0.1
+-- Generation Time: May 17, 2026 at 10:55 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-CREATE DATABASE IF NOT EXISTS `project8_db`;
-USE `project8_db`;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -83,7 +80,8 @@ INSERT INTO `projects` (`id`, `workspace_id`, `name`, `description`, `deadline`,
 (8, 2, 't1', 't1', '2026-05-29', '#9b59b6', 1, '2026-05-15 21:43:54'),
 (9, 9, 'd building', 'computer labs', '2026-05-27', '#9b59b6', 1, '2026-05-16 10:23:59'),
 (10, 9, 'aiub', 'books & beyond', '2026-05-27', '#3498db', 0, '2026-05-16 10:25:12'),
-(11, 9, 'R', 'webtech', '2026-05-20', '#e74c3c', 0, '2026-05-16 10:58:23');
+(11, 9, 'R', 'webtech', '2026-05-20', '#e74c3c', 0, '2026-05-16 10:58:23'),
+(12, 11, 'E-Commerce Site', 'weawarw', '2026-07-31', '#3498db', 0, '2026-05-16 20:37:13');
 
 -- --------------------------------------------------------
 
@@ -110,7 +108,9 @@ INSERT INTO `project_members` (`id`, `project_id`, `user_id`) VALUES
 (10, 10, 5),
 (11, 10, 4),
 (12, 11, 5),
-(13, 11, 4);
+(13, 11, 4),
+(15, 12, 6),
+(16, 12, 7);
 
 -- --------------------------------------------------------
 
@@ -138,7 +138,8 @@ INSERT INTO `tasks` (`id`, `project_id`, `title`, `description`, `assigned_to`, 
 (2, 10, 'test1', 'teast1', 5, 'medium', '2026-05-17', 'todo', '2026-05-16 11:18:23'),
 (3, 10, 'test1', 'teast1', 5, 'medium', '2026-05-17', 'todo', '2026-05-16 11:21:08'),
 (4, 10, 'test2', 'test2', 4, 'low', '2026-05-20', 'todo', '2026-05-16 11:30:12'),
-(5, 11, 'taskA', 'A', 4, 'low', '2026-05-20', 'todo', '2026-05-16 11:33:35');
+(5, 11, 'taskA', 'A', 4, 'low', '2026-05-20', 'todo', '2026-05-16 11:33:35'),
+(6, 12, 'Login page', 'Create Login page', 6, 'medium', '2026-05-20', 'in-progress', '2026-05-17 07:15:10');
 
 -- --------------------------------------------------------
 
@@ -162,7 +163,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `password_hash`, `created_at`) VALUE
 (2, 'Salma Akter', 'salmaakterurmi1@gmail.com', '$2y$10$K8x.mpb9Ug6jW58ANE2F4OkmSPAnPaOYlVFCEhzJfichH5t5ek/w6', '2026-05-15 07:07:52'),
 (3, 'nayma nazim neer', 'nayma1@gmail.com', '$2y$10$RjbvdCahS02NBVDJT0T67edGvCoYEdO0nnY5cDvkUHGp.1oKx6udS', '2026-05-15 09:56:39'),
 (4, 'diab', 'diab@gmail.com', '$2y$10$5zpEdwRxKuw07HOG88Ccsea.6pBITB1eQIbxlREP9PENSeG/tdr1W', '2026-05-15 16:53:42'),
-(5, 'angkita', 'angkita116@gmail.com', '$2y$10$OySR90sHSNcgKVIaw4yZr.vmJSOAeCup1PoJdUn2RvYKMnWgrL9Xq', '2026-05-16 10:16:25');
+(5, 'angkita', 'angkita116@gmail.com', '$2y$10$OySR90sHSNcgKVIaw4yZr.vmJSOAeCup1PoJdUn2RvYKMnWgrL9Xq', '2026-05-16 10:16:25'),
+(6, 'asif', 'asif@gmail.com', '$2y$10$6ZZ8OuE3mDnc/7wbBhe4oOuBMrzbRtJ7sBRs4q3pARrnQQoRSADsS', '2026-05-16 20:33:55'),
+(7, 'asif2', 'asif2@gmail.com', '$2y$10$KmXxobT9KBHxEqvOqgLzZurB4WHvOUxlBh9u.fHeJTCwLq0i3ockW', '2026-05-17 07:24:53');
 
 -- --------------------------------------------------------
 
@@ -192,7 +195,8 @@ INSERT INTO `workspaces` (`id`, `name`, `description`, `owner_id`, `invite_code`
 (7, 'test', 'aaa', 4, 'SJIG1N', '2026-05-15 17:28:35'),
 (8, 'teat1', 'aaa', 4, 'WJ36FE', '2026-05-15 17:42:11'),
 (9, 'aiub', 'gol', 5, 'JC6Z7A', '2026-05-16 10:19:39'),
-(10, 'library', 'book management', 5, 'PDE985', '2026-05-16 10:21:28');
+(10, 'library', 'book management', 5, 'PDE985', '2026-05-16 10:21:28'),
+(11, 'Test project', 'I am testing workspace', 6, 'HY6JS1', '2026-05-16 20:34:52');
 
 -- --------------------------------------------------------
 
@@ -218,7 +222,9 @@ INSERT INTO `workspace_members` (`id`, `workspace_id`, `user_id`, `joined_at`) V
 (9, 2, 4, '2026-05-15 18:01:05'),
 (10, 9, 5, '2026-05-16 10:19:39'),
 (11, 10, 5, '2026-05-16 10:21:28'),
-(12, 9, 4, '2026-05-16 11:26:21');
+(12, 9, 4, '2026-05-16 11:26:21'),
+(13, 11, 6, '2026-05-16 20:34:52'),
+(14, 11, 7, '2026-05-17 07:25:49');
 
 --
 -- Indexes for dumped tables
@@ -300,43 +306,43 @@ ALTER TABLE `activity_logs`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `project_members`
 --
 ALTER TABLE `project_members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `workspaces`
 --
 ALTER TABLE `workspaces`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `workspace_members`
 --
 ALTER TABLE `workspace_members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
