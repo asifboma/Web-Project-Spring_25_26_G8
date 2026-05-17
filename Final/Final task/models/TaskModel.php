@@ -35,8 +35,11 @@ class TaskModel
 
     public function getTaskById($task_id)
     {
-        $sql = "SELECT * FROM tasks
-                WHERE id = '$task_id'";
+        $sql = "SELECT tasks.*, users.name AS assigned_name
+            FROM tasks
+            LEFT JOIN users
+            ON tasks.assigned_to = users.id
+            WHERE tasks.id = '$task_id'";
 
         $result = $this->conn->query($sql);
 
