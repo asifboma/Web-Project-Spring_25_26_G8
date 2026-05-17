@@ -171,6 +171,19 @@ class ProjectModel {
         return $result;
     }
 
+    function getProjectMembers($connection, $project_id)
+{
+    $sql = "SELECT users.id, users.name, users.email
+            FROM projects p, workspace_members wm, users
+            WHERE p.workspace_id = wm.workspace_id
+            AND wm.user_id = users.id
+            AND p.id = '$project_id'";
+
+    $result = $connection->query($sql);
+
+    return $result;
+}
+
 }
 
 ?>

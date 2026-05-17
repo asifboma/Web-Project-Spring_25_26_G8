@@ -81,7 +81,7 @@ include __DIR__ . "/../../controllers/projectListController.php";
             $deadlineClass = "overdue";
         }
 
-        $members = $projectModel->getProjectMembers($connection, $project['id']);
+        $members = $projectModel->getProjectMembers($connection, $project["id"]);
         ?>
 
         <div class="project-card" style="border-left: 8px solid <?php echo $project['color_label']; ?>;">
