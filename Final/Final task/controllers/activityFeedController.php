@@ -9,7 +9,7 @@ session_start();
 
 if(!isset($_SESSION["user_id"]))
 {
-    header("Location: ../auth/login.php")0;
+    header("Location: ../auth/login.php");
 }
 
 if(!isset($_GET["project_id"]))
@@ -25,7 +25,7 @@ $connection = $database->connection();
 $projectModel = new ProjectModel($connection);
 $activityModel = new ActivityModel($connection);
 
-$projectResult = $projectModel->getProjectById($project_id);
+$projectResult = $projectModel->getProjectById($connection, $project_id);
 
 if($projectResult->num_rows == 0)
 {
@@ -41,7 +41,7 @@ else
     }
     else
     {
-        $members = $projectModel->getProjectMembers($project_id);
+        $members = $projectModel->getProjectMembers($connection, $project_id);
         $activities = $activityModel->getActivities($project_id);
     }
 }
