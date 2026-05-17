@@ -102,21 +102,18 @@ class ProjectModel {
         return $result;
     }
 
-    function getProjectMembers($connection, $project_id) {
+    function getWorkspaceMembers($connection, $workspace_id)
+{
+    $sql = "SELECT users.id, users.name, users.email
+            FROM workspace_members wm
+            JOIN users
+            ON wm.user_id = users.id
+            WHERE wm.workspace_id = '$workspace_id'";
 
-        $sql = "SELECT users.id, users.name, users.email
+    $result = $connection->query($sql);
 
-                FROM project_members pm
-
-                JOIN users
-                ON pm.user_id = users.id
-
-                WHERE pm.project_id = '$project_id'";
-
-        $result = $connection->query($sql);
-
-        return $result;
-    }
+    return $result;
+}
 
     function getProjectMemberIds($connection, $project_id) {
 
