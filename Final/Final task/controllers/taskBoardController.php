@@ -2,6 +2,8 @@
 require_once __DIR__ . "/../config/db.php";
 require_once __DIR__ . "/../models/ProjectModel.php";
 require_once __DIR__ . "/../models/TaskModel.php";
+require_once __DIR__ . "/../config/helpers.php";
+require_once __DIR__ . "/../models/ActivityModel.php";
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -34,10 +36,31 @@ if(isset($_POST["move_task"]))
     $task_id = $_POST["task_id"];
     $status = $_POST["status"];
 
-    
-    $taskModel->updateTaskStatus($task_id, $status);
+    $taskResult = $taskModel->getTaskById($task_id);
+
+    if($taskResult && $taskResult->num_rows > 0)
+    {
+        $task = $taskResult->fetch_assoc();
+
+        $oldStatus = $task["status"];
+
+        if($taskModel->updateTaskStatus($task_id, $status))
+        {
+            $activityModel = new ActivityModel($connection);
+
+            $oldStatusText = ucfirst(str_replace("-", " ", $oldStatus));
+            $newStatusText = ucfirst(str_replace("-", " ", $status));
+
+            $activityModel->addActivity(
+                $task["project_id"],
+                $_SESSION["user_id"],
+                "moved task '" . $task["title"] . "' from " . $oldStatusText . " to " . $newStatusText
+            );
+        }
+    }
 
     header("Location: taskBoard.php?project_id=".$project_id);
+    exit();
 }
 
 if ($projectResult->num_rows == 0) {

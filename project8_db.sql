@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2026 at 10:55 AM
+-- Generation Time: May 17, 2026 at 04:47 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -35,6 +35,16 @@ CREATE TABLE `activity_logs` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `activity_logs`
+--
+
+INSERT INTO `activity_logs` (`id`, `project_id`, `user_id`, `action_text`, `created_at`) VALUES
+(6, 12, 7, 'created a task: cart', '2026-05-17 14:24:20'),
+(7, 12, 7, 'moved task \'reg page\' from Todo to In progress', '2026-05-17 14:46:18'),
+(8, 12, 7, 'moved task \'cart\' from In progress to Done', '2026-05-17 14:46:23'),
+(9, 12, 7, 'created a task: logout function', '2026-05-17 14:46:51');
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +58,15 @@ CREATE TABLE `comments` (
   `body` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `task_id`, `user_id`, `body`, `created_at`) VALUES
+(2, 6, 6, 'I will do this task', '2026-05-17 13:55:52'),
+(3, 6, 6, 'Do not touch this code', '2026-05-17 13:56:11'),
+(4, 9, 7, 'date is invalid', '2026-05-17 14:41:52');
 
 -- --------------------------------------------------------
 
@@ -139,7 +158,11 @@ INSERT INTO `tasks` (`id`, `project_id`, `title`, `description`, `assigned_to`, 
 (3, 10, 'test1', 'teast1', 5, 'medium', '2026-05-17', 'todo', '2026-05-16 11:21:08'),
 (4, 10, 'test2', 'test2', 4, 'low', '2026-05-20', 'todo', '2026-05-16 11:30:12'),
 (5, 11, 'taskA', 'A', 4, 'low', '2026-05-20', 'todo', '2026-05-16 11:33:35'),
-(6, 12, 'Login page', 'Create Login page', 6, 'medium', '2026-05-20', 'in-progress', '2026-05-17 07:15:10');
+(6, 12, 'Login page', 'Create Login page', 6, 'medium', '2026-05-20', 'done', '2026-05-17 07:15:10'),
+(7, 12, 'reg page', 'reg page create', 6, 'low', '2026-06-20', 'in-progress', '2026-05-17 14:11:23'),
+(8, 12, 'dashboard', 'create dashboard', 6, 'medium', '2026-07-20', 'todo', '2026-05-17 14:20:07'),
+(9, 12, 'cart', 'cart page', 7, 'low', '0000-00-00', 'done', '2026-05-17 14:24:20'),
+(10, 12, 'logout function', 'logout', 6, 'high', '2026-06-20', 'todo', '2026-05-17 14:46:51');
 
 -- --------------------------------------------------------
 
@@ -300,13 +323,13 @@ ALTER TABLE `workspace_members`
 -- AUTO_INCREMENT for table `activity_logs`
 --
 ALTER TABLE `activity_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `projects`
@@ -324,7 +347,7 @@ ALTER TABLE `project_members`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`

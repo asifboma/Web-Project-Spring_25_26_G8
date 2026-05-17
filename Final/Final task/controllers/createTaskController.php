@@ -2,6 +2,7 @@
 require_once __DIR__ . "/../config/db.php";
 require_once __DIR__ . "/../models/TaskModel.php";
 require_once __DIR__ . "/../models/ProjectModel.php";
+require_once __DIR__ . "/../models/ActivityModel.php";
 
 session_start();
 
@@ -52,10 +53,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($taskModel->createTask($project_id, $title, $description, $assigned_to, $priority, $due_date)) {
 
-        header("Location: ../views/task/taskBoard.php?project_id=" . $project_id);
-        exit();
-    } else {
-        echo "Task creation failed.";
-    }
+    $activityModel = new ActivityModel($connection);
+    $activityModel->addActivity($project_id, $_SESSION["user_id"], "created a task: " . $title);
+
+    header("Location: ../views/task/taskBoard.php?project_id=" . $project_id);
+    exit();
+}
 }
 ?>
